@@ -13,7 +13,7 @@ export default function Login() {
           style={{
             backgroundImage: `url(${LoginImage})`
           }}
-        ></div>
+        > . </div>
         <div className="login-right-column">
           <form className="login-form">
             <div>
