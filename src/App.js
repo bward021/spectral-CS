@@ -6,7 +6,6 @@ import Login from "./components/login";
 function App() {
   return (
     <div className="App">
-      <h1>This is My Spectral App</h1>
       <Router>
           <div>
             <Switch>
