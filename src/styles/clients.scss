@@ -36,9 +36,15 @@
 
   .render-clients{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr;
     padding: 15px;
     text-align: center;
+
+    .client-data-link{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
 
     .client-portal-link{
       background-color: #107aa0;

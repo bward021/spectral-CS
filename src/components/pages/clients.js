@@ -24,15 +24,17 @@ const Clients = (props) => {
     return clients.map((client) => {
       const clientId = client.client_id;
       return (
-        <div>
-          <Link className="render-clients" to={`/data/${clientId}`}>
-            <div>{client.client_firstname}</div>
-            <div>{client.client_lastname}</div>
-            <div>{client.client_age}</div>
-            <div>{client.client_supervisor}</div>
-            <Link  to={`/clients/${clientId}`}>
-              <div className="client-portal-link">CP</div>
-            </Link>
+        <div className="render-clients">
+          <Link  to={`/data/${clientId}`}>
+            <div className="client-data-link">
+              <div>{client.client_firstname}</div>
+              <div>{client.client_lastname}</div>
+              <div>{client.client_age}</div>
+              <div>{client.client_supervisor}</div>
+            </div>
+          </Link>
+          <Link to={`/clients/${clientId}`}>
+            <div className="client-portal-link">CP</div>
           </Link>
         </div>
       );
