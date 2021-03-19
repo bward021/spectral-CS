@@ -1,0 +1,20 @@
+.nav-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100px;
+  background-color: #50CAF8;
+  justify-content: space-around;
+  align-items: center;
+  
+  .nav-link-wrapper{
+    font-size: 25px;
+    a {
+      text-decoration: none;
+      color: rgb(72, 82, 109);
+    }
+
+    .active{
+      color: antiquewhite;
+    }
+  }
+}

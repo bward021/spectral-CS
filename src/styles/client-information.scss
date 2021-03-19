@@ -15,10 +15,47 @@
     border-bottom: 2px solid black;
   }
 
+  .information-item-1 {
+    grid-area: first;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .information-item-2 {
+    grid-area: last;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .information-item-3 {
+    grid-area: age;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .information-item-4 {
+    grid-area: gender;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .information-item-5{
+    grid-area: supervisor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
   .client-info{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+    width: 85%;
+    grid-template-areas: 
+    "first first last last"
+    "age age  gender gender"
+    "supervisor supervisor supervisor .";
     justify-content: center;
     align-items: center;
     text-align: center;

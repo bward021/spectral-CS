@@ -4,6 +4,8 @@ import Clients from "./components/pages/clients";
 import Login from "./components/pages/login";
 import ClientPortal from "./components/pages/client-portal";
 import Data from "./components/pages/data";
+import NavigationComponent from "./components/navigation/nav-bar"
+import AddClient from "./components/pages/add-client";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
@@ -12,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <NavigationComponent />
         <div>
           <Switch>
             <Route exact path="/">
@@ -29,6 +32,9 @@ function App() {
             </Route>
             <Route path="/data/:slug">
               <Data loggedIn={loggedIn} permissions={permissions} />
+            </Route>
+            <Route path="/add-client">
+              <AddClient loggedIn={loggedIn} permissions={permissions} />
             </Route>
           </Switch>
         </div>
