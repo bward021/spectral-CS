@@ -1,36 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Clients from './components/pages/clients';
+import Clients from "./components/pages/clients";
 import Login from "./components/pages/login";
-
+import ClientPortal from "./components/pages/client-portal";
+import Data from "./components/pages/data";
 
 function App() {
-
   const [loggedIn, setLoggedIn] = useState("");
-
-
+  const [permissions, setPermissions] = useState("");
 
   return (
     <div className="App">
       <Router>
-          <div>
-            <Switch>
-            <Route
-                exact
-                path="/"
-                render={(props) => (
-                  <Login {...props} setLoggedIn={setLoggedIn} />
-                )}
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Login
+                setLoggedIn={setLoggedIn}
+                setPermissions={setPermissions}
               />
-              <Route 
-                path="/clients" 
-                render={(props) => (
-                  <Clients {...props} loggedIn={loggedIn} />
-                )}
-              />
-            </Switch>
-          </div>
-        </Router>
+            </Route>
+
+            <Route exact path="/clients">
+              <Clients loggedIn={loggedIn} permissions={permissions} />
+            </Route>
+            <Route path="/clients/:slug">
+              <ClientPortal loggedIn={loggedIn} permissions={permissions} />
+            </Route>
+            <Route path="/data/:slug">
+              <Data loggedIn={loggedIn} permissions={permissions} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }

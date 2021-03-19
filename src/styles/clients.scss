@@ -1,0 +1,49 @@
+.clients-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.render-clients-wrapper {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-content: center;
+  width: 75%;
+  margin: 0px;
+
+  a {
+    text-decoration: none;
+    height: 30px;
+    color: black;
+    border-radius: 15px;
+
+    &:hover{
+      background-color: aliceblue;
+    }
+    
+  }
+
+  .render-clients-headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px;
+    text-align: center;
+    background-color: #50CAF8;
+    border-radius: 15px;
+    font-weight: 900;
+  }
+
+  .render-clients{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 15px;
+    text-align: center;
+
+    .client-portal-link{
+      background-color: #107aa0;
+      border-radius: 30px;
+      color: rgb(223, 222, 222);
+    }
+  }
+}

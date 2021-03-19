@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios"
+import { useHistory } from "react-router-dom"
 
 import LoginImage from "../../assets/images/Spectral.PNG"
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  let history = useHistory()
 
   const handleSubmit = (e) => {
     axios
@@ -17,9 +20,11 @@ export default function Login(props) {
           },
       )
       .then((response) => {
-        if (response.data.Employees_id || response.data.Employees_id === "1") {
+        console.log(response)
+        if (response.data.id || response.data.id === 1) {
           props.setLoggedIn("loggedin")
-          props.history.push("/clients")
+          props.setPermissions(response.data.permissions)
+          history.push("/clients")
         }
       })
       .catch((error) => {
