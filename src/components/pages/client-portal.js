@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import ClientInfo from "../client-portal-helpers/client-information"
 
@@ -27,8 +27,10 @@ const ClientPortal = () => {
       <div className="client-information-wrapper">
         <ClientInfo clientInfo={clientInfo} />
       </div>
-      <h1>This is the Client Portal Page for {clientId}</h1>
-
+      <div>
+        <h1>This is the Client Portal Page for {clientId}</h1>
+        <Link>Add Client Trial</Link>
+      </div>
     </div>
    );
 }

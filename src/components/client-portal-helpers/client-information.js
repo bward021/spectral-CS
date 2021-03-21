@@ -36,8 +36,8 @@ const ClientInfo = (props) => {
           <p>Supervisor:</p>
           <div>{client_supervisor}</div>
         </div>
-        <Address id={client_id}/>
       </div>
+        <Address id={client_id}/>
     </div>
   );
 };
