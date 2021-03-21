@@ -1,10 +1,11 @@
 .nav-wrapper {
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100px;
   background-color: #50CAF8;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0 12px 11px rgba(0, 0, 0, 0.2);
   
   .nav-link-wrapper{
     font-size: 25px;

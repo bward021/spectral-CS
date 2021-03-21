@@ -1,8 +1,10 @@
 import React from "react";
+import Address from '../client-portal-helpers/address';
+
 
 const ClientInfo = (props) => {
   const {
-    // client_id,
+    client_id,
     client_age,
     client_firstname,
     client_lastname,
@@ -34,6 +36,7 @@ const ClientInfo = (props) => {
           <p>Supervisor:</p>
           <div>{client_supervisor}</div>
         </div>
+        <Address id={client_id}/>
       </div>
     </div>
   );
