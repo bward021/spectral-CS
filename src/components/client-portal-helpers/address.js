@@ -8,7 +8,6 @@ const Address = (props) => {
     axios
       .get(`http://127.0.0.1:5000/get-client-address/${props.id}`)
       .then((response) => {
-        console.log(response);
         setAddress(response.data);
       })
       .catch((error) => {

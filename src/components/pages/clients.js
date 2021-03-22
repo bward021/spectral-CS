@@ -12,7 +12,6 @@ const Clients = (props) => {
     axios
       .get("http://127.0.0.1:5000/clients")
       .then((response) => {
-        console.log(response.data);
         setClients(response.data);
       })
       .catch((error) => {
