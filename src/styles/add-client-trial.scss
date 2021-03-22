@@ -1,0 +1,22 @@
+.add-client-trial-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+  text-align: center;
+
+  .select-trial-type{
+    width: 40%;
+  }
+
+  .trial-form-wrapper{
+    display: flex;
+    
+    .trial-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}

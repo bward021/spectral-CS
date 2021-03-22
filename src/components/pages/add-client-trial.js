@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useParams } from "react-router-dom"
+import Duration from '../add-trial-helpers.js/duration';
+import Frequency from '../add-trial-helpers.js/frequency';
+import Trial from '../add-trial-helpers.js/trial';
 
 const AddClientTrial = (props) => {
+
+  let { slug } = useParams();
+  const [clientId] = useState(slug)
+  const [trialType, setTrialType] = useState("")
+
+  const renderComponent = () => {
+    if (trialType === "") {
+      return("")
+    } else if (trialType === "Trial") {
+      return <Trial id={clientId} />
+    } else if (trialType === "Frequency") {
+      return <Frequency id={clientId} />
+    } else if (trialType === "Duration") {
+      return <Duration id={clientId} />
+    }
+  }
+
   return ( 
-    <div>
-      <h1>This is the AddClientTrial Page</h1>
+    <div className="add-client-trial-container">
+      <h1>Add Trial</h1>
+      <select className="select-trial-type" onChange={(e) => {setTrialType(e.target.value)}} value={trialType}>
+        <option value="" defaultValue>Select Trial Type</option>
+        <option value="Trial">Trial</option>
+        <option value="Duration">Duration</option>
+        <option value="Frequency">Frequency</option>
+      </select>
+        {renderComponent()}
     </div>
    );
 }

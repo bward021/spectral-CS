@@ -29,7 +29,7 @@ const ClientPortal = () => {
       </div>
       <div>
         <h1>This is the Client Portal Page for {clientId}</h1>
-        <Link>Add Client Trial</Link>
+        <Link to={`/add-client-trial/${clientId}`}>Add Client Trial</Link>
       </div>
     </div>
    );
