@@ -23,7 +23,7 @@ const Clients = (props) => {
     return clients.map((client) => {
       const clientId = client.client_id;
       return (
-        <div className="render-clients">
+        <div key={clientId} className="render-clients">
           <Link  to={`/data/${clientId}`}>
             <div className="client-data-link">
               <div>{client.client_firstname}</div>
