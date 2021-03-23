@@ -11,7 +11,6 @@ const FrequencyData = (props) => {
       .get(`http://127.0.0.1:5000/get-frequency/${props.id}`,
       )
       .then((response) => {
-          console.log(response)
           setFrequencyData(response.data)
       })
       .catch((error) => {

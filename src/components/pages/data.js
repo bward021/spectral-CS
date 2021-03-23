@@ -17,11 +17,11 @@ const Data = (props) => {
     <div>
       <input type="date" onChange={(e) => {setDate(e.target.value)}} value={date}/>
       <div>
-        <TrialData id={clientId} />
+        <TrialData id={clientId} date={date} />
         <FrequencyData id={clientId} date={date} />
       </div>
       <div>
-        <DurationData id={clientId} />
+        <DurationData id={clientId} date={date} />
       </div>
     </div>
   );

@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const FrequencyInstance = (props) => {
-  const [date] = useState(props.date)
+  const [date] = useState(props.date);
   const [data, setData] = useState(0);
   const [firstInstance, setFirstInstance] = useState(false);
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5000/get-frequency-instance?id=${props.id}&date=${date}`)
+      .get(
+        `http://127.0.0.1:5000/get-frequency-instance?id=${props.id}&date=${date}`
+      )
       .then((response) => {
         console.log(response);
         if (response.data === "No data found") {
@@ -22,47 +24,35 @@ const FrequencyInstance = (props) => {
       });
   }, [props.id, date]);
 
-
-useEffect(() => {
-  if (firstInstance === true) {
-    axios
-    .post(`http://127.0.0.1:5000/new-frequency-instance`, {
-      id: props.id,
-      data: data,
-      date: date,
-    })
-    .then((response) => {
-      console.log(response);
-      setFirstInstance(false);
-    })
-    .catch((error) => {
-      console.log("error in new frequency: ", error);
-    });
-  } else {
-    axios
-      .patch(`http://127.0.0.1:5000/update-frequency-instance/${props.id}`, {
-        data: data,
-        date: date,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log("error in frequency update: ", error);
-      });
-  }
-// eslint-disable-next-line
-}, [data])
-
-  const handleClick = (e) => {
-    if (e.target.value === "+") {
-      // setData(data + 1);
-      setData((prevState) => (
-        prevState + 1
-    ), () => console.log('after', data))
-    }
-    if (e.target.value === "-" && data > 0) {
-      setData(data - 1);
+  const handleClick = (num) => {
+    if (firstInstance === true) {
+      axios
+        .post(`http://127.0.0.1:5000/new-frequency-instance`, {
+          id: props.id,
+          data: data + num,
+          date: date,
+        })
+        .then((response) => {
+          console.log(response);
+          setData(data + num);
+          setFirstInstance(false);
+        })
+        .catch((error) => {
+          console.log("error in new frequency: ", error);
+        });
+    } else {
+      axios
+        .patch(`http://127.0.0.1:5000/update-frequency-instance/${props.id}`, {
+          data: data + num,
+          date: date,
+        })
+        .then((response) => {
+          console.log(response);
+          setData(data + num);
+        })
+        .catch((error) => {
+          console.log("error in frequency update: ", error);
+        });
     }
   };
 
@@ -70,16 +60,17 @@ useEffect(() => {
     <div>
       <input
         type="button"
-        onClick={(e) => {
-          handleClick(e);
+        onClick={() => {
+          handleClick(-1);
         }}
         value="-"
+        disabled={data <= 0 ? true : false}
       />
       <p>{props.name}</p>
       <input
         type="button"
-        onClick={(e) => {
-          handleClick(e);
+        onClick={() => {
+          handleClick(1);
         }}
         value="+"
       />
