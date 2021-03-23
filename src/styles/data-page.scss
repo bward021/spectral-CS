@@ -1,0 +1,58 @@
+.date-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+
+  input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px Solid black;
+    width: 25%;
+    font-size: 20px;
+    font-family:'arial', serif;
+  }
+}
+
+
+
+.left-column {
+  grid-area: L;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bottom{
+  grid-area: B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+.right-column{
+  grid-area: D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.data-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+  width: 100%;
+  height: calc(100vh - 160px);
+  grid-template-areas: 
+  "L L L L L D"
+  "L L L L L D"
+  "L L L L L D"
+  "B B B B B B";
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}

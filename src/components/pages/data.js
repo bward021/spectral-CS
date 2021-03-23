@@ -1,27 +1,39 @@
-import React, { useState } from 'react';
-import { useParams } from "react-router-dom"
-import moment from 'moment';
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import moment from "moment";
 
 import DurationData from "../data-helpers/duration-data";
 import FrequencyData from "../data-helpers/frequency-data";
 import TrialData from "../data-helpers/trial-data";
 
 const Data = (props) => {
-
   let { slug } = useParams();
-  const [clientId] = useState(slug)
-  const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
+  const [clientId] = useState(slug);
+  const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
 
   console.log(date);
   return (
     <div>
-      <input type="date" onChange={(e) => {setDate(e.target.value)}} value={date}/>
-      <div>
-        <TrialData id={clientId} date={date} />
-        <FrequencyData id={clientId} date={date} />
+      <div className="date-wrapper">
+        <input
+          type="date"
+          onChange={(e) => {
+            console.log('changed')
+            setDate(e.target.value);
+          }}
+          value={date}
+        />
       </div>
-      <div>
-        <DurationData id={clientId} date={date} />
+      <div className="data-container">
+        <div className="left-column">
+          <TrialData id={clientId} date={date} />
+        </div>
+        <div className="bottom">
+          <FrequencyData id={clientId} date={date} />
+        </div>
+        <div className="right-column">
+          <DurationData id={clientId} date={date} />
+        </div>
       </div>
     </div>
   );

@@ -11,12 +11,12 @@ const FrequencyData = (props) => {
       .get(`http://127.0.0.1:5000/get-frequency/${props.id}`,
       )
       .then((response) => {
-          setFrequencyData(response.data)
+        setFrequencyData(response.data)
       })
       .catch((error) => {
         console.log("Error in Clients: ", error);
       });
-  }, [props.id]);
+  }, [props.id, props.date]);
 
   const renderFrequencies = () => {
     return frequencyData.map((frequency) => {
@@ -30,7 +30,7 @@ const FrequencyData = (props) => {
 
 
   return ( 
-    <div>
+    <div className="frequency-container">
       {renderFrequencies()}
     </div>
    );
