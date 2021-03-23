@@ -31,7 +31,16 @@ const AddClient = (props) => {
         },
     )
     .then(response => {
-      console.log(response)
+      setFirstName("")
+      setLastName("")
+      setAge("")
+      setGender("")
+      setSupervisor("")
+      setAddressOne("")
+      setAddressTwo("")
+      setCity("")
+      setSt("")
+      setPostalCode("")
     })
     .catch(error => {
       console.log("error:", error)

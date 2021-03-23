@@ -17,16 +17,13 @@ const Trial = (props) => {
       }
     )
     .then((response) => {
-      console.log(response)
+      setName("");
+      setCategory("");
+      setDescription("");
     })
     .catch((error) => {
       console.log("error in add trial: ", error)
     })
-
-    
-    setName("");
-    setCategory("");
-    setDescription("");
 
     e.preventDefault()
   }

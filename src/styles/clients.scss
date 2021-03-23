@@ -38,11 +38,14 @@
     display: grid;
     grid-template-columns: 4fr 1fr;
     padding: 15px;
-    text-align: center;
+    text-align: center;   
+    justify-content: center;
+    align-content: center;
 
     .client-data-link{
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
+
     }
 
 

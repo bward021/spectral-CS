@@ -15,15 +15,12 @@ const Duration = (props) => {
       }
     )
     .then((response) => {
-      console.log(response)
+      setName("");
+      setDescription("");
     })
     .catch((error) => {
       console.log("error in add Duration: ", error)
     })
-
-    
-    setName("");
-    setDescription("");
 
     e.preventDefault()
   }

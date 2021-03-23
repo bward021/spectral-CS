@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useParams } from "react-router-dom"
+import moment from 'moment';
+
+import DurationData from "../data-helpers/duration-data";
+import FrequencyData from "../data-helpers/frequency-data";
+import TrialData from "../data-helpers/trial-data";
 
 const Data = (props) => {
-  return ( 
+
+  let { slug } = useParams();
+  const [clientId] = useState(slug)
+  const [date, setDate] = useState(moment().format('YYYY-MM-DD'))
+
+  console.log(date);
+  return (
     <div>
-      <h1>This is the Data Page</h1>
+      <input type="date" onChange={(e) => {setDate(e.target.value)}} value={date}/>
+      <div>
+        <TrialData id={clientId} />
+        <FrequencyData id={clientId} date={date} />
+      </div>
+      <div>
+        <DurationData id={clientId} />
+      </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default Data;
