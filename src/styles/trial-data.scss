@@ -3,4 +3,66 @@
   grid-template-columns: 1fr 5fr;
   width: 100%;
   height: 100%;
+
+  .trial-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 390px;
+    width: 80%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    cursor: pointer;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      border-radius: 50px;
+
+      &:hover {
+        background-color: rgb(216, 244, 253);
+      }
+    }
+  }
+  .trial-instance-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .trial-instance-container {
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+      border-radius: 90px;
+      box-shadow: 0 -1px 11px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      height: 80%;
+      justify-content: center;
+      align-items: center;
+
+      .trial-buttons-wrapper{
+        display: flex;
+
+        .trial-button{
+          display: flex;
+          padding: 20px;
+
+          p {
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+        }
+      }
+
+
+    }
+  }
 }

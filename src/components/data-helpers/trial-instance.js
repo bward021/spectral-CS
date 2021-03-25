@@ -143,7 +143,7 @@ const TrialInstanceData = (props) => {
       <h2>{props.trial.trial_name}</h2>
       <p>{props.trial.trial_description}</p>
       <div className="trial-buttons-wrapper">
-        <div>
+        <div className="trial-button" >
           <button
             onClick={() => {
               handleIncorrect(-1);
@@ -160,8 +160,8 @@ const TrialInstanceData = (props) => {
           >
             +
           </button>
-        </div>
-        <div>
+        </div >
+        <div className="trial-button" >
           <button
             onClick={() => {
               handlePrompted(-1);
@@ -179,7 +179,7 @@ const TrialInstanceData = (props) => {
             +
           </button>
         </div>
-        <div>
+        <div className="trial-button" >
           <button
             onClick={() => {
               handleCorrect(-1);

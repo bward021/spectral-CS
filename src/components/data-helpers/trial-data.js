@@ -27,16 +27,16 @@ const TrialData = (props) => {
   const renderTrials = () => {
     return trials.map((trial) => {
       return(
-        <div onClick={() => {handleClick(trial)}}>{trial.trial_name}</div>
+        <li onClick={() => {handleClick(trial)}}>{trial.trial_name}</li>
       )
     })
   }
 
   return ( 
     <div className="trial-data-container" >
-      <div className="trial-list-container" >
+      <ul className="trial-list-container" >
         {renderTrials()}
-      </div>
+      </ul>
       <div className="trial-instance-data">
         {trialSelect && <TrialInstanceData date={props.date} trial={trialSelect} />}
       </div>

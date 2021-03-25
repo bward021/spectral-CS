@@ -7,6 +7,7 @@ import Data from "./components/pages/data";
 import NavigationComponent from "./components/navigation/nav-bar"
 import AddClient from "./components/pages/add-client";
 import AddClientTrial from "./components/pages/add-client-trial";
+import EmployeeManager from "./components/pages/employee-manager";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
@@ -39,6 +40,9 @@ function App() {
             </Route>
             <Route path="/add-client-trial/:slug">
               <AddClientTrial loggedIn={loggedIn} permissions={permissions} />
+            </Route>
+            <Route path="/employee-manager">
+              <EmployeeManager loggedIn={loggedIn} permissions={permissions} />
             </Route>
           </Switch>
         </div>
