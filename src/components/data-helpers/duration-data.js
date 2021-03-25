@@ -18,6 +18,7 @@ const DurationData = (props) => {
     .catch((error)=>{
       console.log("error in duration: ", error);
     })
+    // eslint-disable-next-line
   }, [])
 
   const renderDurations = () => {

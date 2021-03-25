@@ -1,0 +1,62 @@
+.employee-manager-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+  text-align: center;
+  
+  .new-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 15px;
+  }
+
+  .left-column {
+    grid-area: L;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-left: 30px;
+
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .employees-rendered {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      width: 100%;
+      padding: 15px 0px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+
+      &:hover{
+        background-color: #f1f1f1;
+      }
+    }
+  }
+
+  .right-column {
+    grid-area: R;
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .employee-manager-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    width: 100%;
+    grid-template-areas: "L L R";
+  }
+}

@@ -17,8 +17,8 @@ const NavigationComponent = (props) => {
         </NavLink>
       </div>
       <div className="nav-link-wrapper">
-        <NavLink to="/add-employee">
-          Add Employee
+        <NavLink to="/employee-manager">
+          Employees
         </NavLink>
       </div>
     </div>
