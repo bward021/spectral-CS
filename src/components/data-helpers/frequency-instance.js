@@ -8,7 +8,7 @@ const FrequencyInstance = (props) => {
   useEffect(() => {
     axios
       .get(
-        `http://127.0.0.1:5000/get-frequency-instance?id=${props.id}&date=${props.date}`
+        `https://bw-spectral-cs-be.herokuapp.com/get-frequency-instance?id=${props.id}&date=${props.date}`
       )
       .then((response) => {
         if (response.data === "No data found") {
@@ -26,7 +26,7 @@ const FrequencyInstance = (props) => {
   const handleClick = (num) => {
     if (firstInstance === true) {
       axios
-        .post(`http://127.0.0.1:5000/new-frequency-instance`, {
+        .post(`https://bw-spectral-cs-be.herokuapp.com/new-frequency-instance`, {
           id: props.id,
           data: data + num,
           date: props.date,
@@ -40,7 +40,7 @@ const FrequencyInstance = (props) => {
         });
     } else {
       axios
-        .patch(`http://127.0.0.1:5000/update-frequency-instance/${props.id}`, {
+        .patch(`https://bw-spectral-cs-be.herokuapp.com/update-frequency-instance/${props.id}`, {
           data: data + num,
           date: props.date,
         })

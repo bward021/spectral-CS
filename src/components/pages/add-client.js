@@ -16,7 +16,7 @@ const AddClient = (props) => {
 
   const handleSubmit = (e) => {
     axios.post(
-      "http://127.0.0.1:5000/add-client",
+      "https://bw-spectral-cs-be.herokuapp.com/add-client",
       {
         firstName: firstName,
         lastName: lastName,

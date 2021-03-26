@@ -9,7 +9,7 @@ const DurationData = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-all-client-duration/${props.id}`
+      url: `https://bw-spectral-cs-be.herokuapp.com/get-all-client-duration/${props.id}`
     })
     .then((response)=>{
       console.log(response)

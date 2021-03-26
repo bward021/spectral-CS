@@ -51,7 +51,7 @@ const StopWatch = (props) => {
     axios(
       {
         method: "post",
-        url: "http://127.0.0.1:5000/new-duration-instance",
+        url: "https://bw-spectral-cs-be.herokuapp.com/new-duration-instance",
         data: {
           id: props.data.duration_id,
           date: props.date,

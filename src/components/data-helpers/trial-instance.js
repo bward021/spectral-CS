@@ -10,7 +10,7 @@ const TrialInstanceData = (props) => {
   useEffect(() => {
     axios
       .get(
-        `http://127.0.0.1:5000/check-trial-instance?id=${props.trial.trial_id}&date=${props.date}`
+        `https://bw-spectral-cs-be.herokuapp.com/check-trial-instance?id=${props.trial.trial_id}&date=${props.date}`
       )
       .then((response) => {
         if (response.data === "No data found") {
@@ -33,7 +33,7 @@ const TrialInstanceData = (props) => {
 
   const handleIncorrect = (num) => {
     if (firstInstance === true) {
-      axios.post("http://127.0.0.1:5000/new-trial-instance",
+      axios.post("https://bw-spectral-cs-be.herokuapp.com/new-trial-instance",
         {
           id: props.trial.trial_id,
           date: props.date,
@@ -50,7 +50,7 @@ const TrialInstanceData = (props) => {
           console.log("error in incorrect: ", error)
         })
     } else {
-      axios.patch("http://127.0.0.1:5000/update-trial-instance-incorrect",
+      axios.patch("https://bw-spectral-cs-be.herokuapp.com/update-trial-instance-incorrect",
       {
         id: props.trial.trial_id,
         data: (incorrect + num),
@@ -69,7 +69,7 @@ const TrialInstanceData = (props) => {
 
   const handlePrompted = (num) => {
     if (firstInstance === true) {
-      axios.post("http://127.0.0.1:5000/new-trial-instance",
+      axios.post("https://bw-spectral-cs-be.herokuapp.com/new-trial-instance",
         {
           id: props.trial.trial_id,
           date: props.date,
@@ -86,7 +86,7 @@ const TrialInstanceData = (props) => {
           console.log("error in Prompted: ", error)
         })
     } else {
-      axios.patch("http://127.0.0.1:5000/update-trial-instance-prompted",
+      axios.patch("https://bw-spectral-cs-be.herokuapp.com/update-trial-instance-prompted",
       {
         id: props.trial.trial_id,
         data: (prompted + num),
@@ -105,7 +105,7 @@ const TrialInstanceData = (props) => {
 
   const handleCorrect = (num) => {
     if (firstInstance === true) {
-      axios.post("http://127.0.0.1:5000/new-trial-instance",
+      axios.post("https://bw-spectral-cs-be.herokuapp.com/new-trial-instance",
         {
           id: props.trial.trial_id,
           date: props.date,
@@ -122,7 +122,7 @@ const TrialInstanceData = (props) => {
           console.log("error in Correct: ", error)
         })
     } else {
-      axios.patch("http://127.0.0.1:5000/update-trial-instance-correct",
+      axios.patch("https://bw-spectral-cs-be.herokuapp.com/update-trial-instance-correct",
       {
         id: props.trial.trial_id,
         data: (correct + num),

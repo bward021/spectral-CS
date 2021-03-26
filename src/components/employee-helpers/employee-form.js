@@ -21,7 +21,7 @@ const EmployeeForm = (props) => {
 
   const handleSubmit = (e) => {
     if (props.employee) {
-      axios.patch("http://127.0.0.1:5000/edit-employee",
+      axios.patch("https://bw-spectral-cs-be.herokuapp.com/edit-employee",
       {
         id: props.employee.employees_id,
         firstname,
@@ -42,7 +42,7 @@ const EmployeeForm = (props) => {
         console.log("error in update employee: ", error);
       })
     } else {
-      axios.post("http://127.0.0.1:5000/add-employee",
+      axios.post("https://bw-spectral-cs-be.herokuapp.com/add-employee",
       {
         firstname,
         lastname,

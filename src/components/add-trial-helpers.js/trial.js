@@ -9,7 +9,7 @@ const Trial = (props) => {
 
   const handleSubmit = (e) => {
     axios.post(
-      `http://127.0.0.1:5000/add-client-trial/${id}`,
+      `https://bw-spectral-cs-be.herokuapp.com/add-client-trial/${id}`,
       {
         name: name,
         category: category,

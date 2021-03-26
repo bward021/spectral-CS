@@ -10,7 +10,7 @@ const EmployeeManager = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-all-employees`,
+      url: `https://bw-spectral-cs-be.herokuapp.com/get-all-employees`,
     })
       .then((response) => {
         console.log(response);
@@ -26,7 +26,7 @@ const EmployeeManager = (props) => {
     console.log(employee)
     axios({
       method: "post",
-      url: `http://127.0.0.1:5000/delete-employee`,
+      url: `https://bw-spectral-cs-be.herokuapp.com/delete-employee`,
       data: {
         id: employee.employees_id,
       }

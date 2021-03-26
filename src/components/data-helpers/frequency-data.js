@@ -8,7 +8,7 @@ const FrequencyData = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5000/get-frequency/${props.id}`,
+      .get(`https://bw-spectral-cs-be.herokuapp.com/get-frequency/${props.id}`,
       )
       .then((response) => {
         setFrequencyData(response.data)

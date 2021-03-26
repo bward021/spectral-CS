@@ -8,7 +8,7 @@ const Frequency = (props) => {
 
   const handleSubmit = (e) => {
     axios.post(
-      `http://127.0.0.1:5000/add-client-frequency/${id}`,
+      `https://bw-spectral-cs-be.herokuapp.com/add-client-frequency/${id}`,
       {
         name: name,
         description: description,
