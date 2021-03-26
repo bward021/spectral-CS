@@ -3,14 +3,7 @@ import Chartjs from "chart.js";
 
 const FrequencyGraph = (props) => {
   const chartContainer = useRef(null);
-  const [chartInstance, setChartInstance] = useState(null);
-  
-  useEffect(() => {
-    if (chartContainer && chartContainer.current) {
-      const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
-      setChartInstance(newChartInstance);
-    }
-  }, [chartContainer]);
+  const [setChartInstance] = useState(null);
   
   const chartConfig = {
     type: "line",
@@ -28,8 +21,16 @@ const FrequencyGraph = (props) => {
       //Customize chart options
     },
   };
-
-    
+  useEffect(() => {
+    if (chartContainer && chartContainer.current) {
+      const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
+      setChartInstance(newChartInstance);
+    }
+    // eslint-disable-next-line
+  }, [chartContainer, setChartInstance]);
+  
+  
+  
   return (
     <div>
       <canvas ref={chartContainer} />
