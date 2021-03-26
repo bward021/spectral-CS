@@ -5,6 +5,7 @@ import EmployeeForm from "../employee-helpers/employee-form";
 const EmployeeManager = (props) => {
   const [employees, setEmployees] = useState([]);
   const [renderForm, setRenderForm] = useState(false)
+  const [employeeToEdit, setEmployeeToEdit] = useState(null)
 
   useEffect(() => {
     axios({
@@ -21,6 +22,29 @@ const EmployeeManager = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const handleDelete = (employee) => {
+    console.log(employee)
+    axios({
+      method: "post",
+      url: `http://127.0.0.1:5000/delete-employee`,
+      data: {
+        id: employee.employees_id,
+      }
+    })
+    .then((response) => {
+      console.log(response)
+      setEmployees(response.data)
+    })
+    .catch((error) => {
+      console.log("error in E-Manager:", error);
+    })
+  }
+
+  const handleEditClick = (employee) => {
+    setEmployeeToEdit(employee)
+    setRenderForm(true)
+  }
+
   const renderEmployees = () => {
     return employees.map((employee) => {
       return (
@@ -30,10 +54,10 @@ const EmployeeManager = (props) => {
           <div>{employee.employees_email}</div>
           <div>{employee.employees_permissions}</div>
           <div>
-            <button>edit</button>
+            <button onClick={()=>{handleEditClick(employee)}}>edit</button>
           </div>
           <div>
-            <button>delete</button>
+            <button onClick={()=> {handleDelete(employee)}}>delete</button>
           </div>
         </div>
       );
@@ -55,13 +79,10 @@ const EmployeeManager = (props) => {
             <div></div>
             <div></div>
           </div>
-          <hr />
-          <div>{renderEmployees()}</div>
+          <div className="all-employees-wrapper">{renderEmployees()}</div>
         </div>
         <div className="right-column">
-          <div>
-            {renderForm && <EmployeeForm />}
-          </div>
+            {renderForm && <EmployeeForm employee={employeeToEdit} setEmployees={setEmployees}/>}
         </div>
       </div>
     </div>

@@ -20,53 +20,78 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 25px;
   }
   .information-item-2 {
     grid-area: last;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 25px;
   }
   .information-item-3 {
     grid-area: age;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 25px;
   }
   .information-item-4 {
     grid-area: gender;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 25px;
   }
   .information-item-5{
     grid-area: supervisor;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 25px;
   }
 
 
   .client-info{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 15px;
     width: 85%;
     grid-template-areas: 
-    "first first last last"
-    "age age  gender gender"
-    "supervisor supervisor supervisor .";
+    "first first . last last"
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."
+    "age age .  gender gender"
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."
+    ". supervisor supervisor supervisor .";
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 25px;
 
-    .information-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
   }
 
+  .client-address{
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 25px;
+    margin-top: 35px;
+  }
 
 }

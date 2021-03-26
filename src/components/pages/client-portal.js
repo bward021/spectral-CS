@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom"
 
 import ClientInfo from "../client-portal-helpers/client-information"
+import FrequencyGraph from '../client-portal-helpers/frequency-graph';
 
 
 const ClientPortal = () => {
@@ -16,6 +17,7 @@ const ClientPortal = () => {
       .get(`http://127.0.0.1:5000/clients/${slug}`)
       .then((response) => {
         setClientInfo(response.data)
+        console.log(response.data)
       })
       .catch((error) => {
         console.log("error in Clients: ", error);
@@ -27,9 +29,10 @@ const ClientPortal = () => {
       <div className="client-information-wrapper">
         <ClientInfo clientInfo={clientInfo} />
       </div>
-      <div>
-        <h1>This is the Client Portal Page for {clientId}</h1>
+      <div className="client-portal-right-side">
+        <h1>{clientInfo.client_firstname}{" "}{clientInfo.client_lastname}</h1>
         <Link to={`/add-client-trial/${clientId}`}>Add Client Trial</Link>
+        <FrequencyGraph />
       </div>
     </div>
    );

@@ -16,7 +16,7 @@ const Address = (props) => {
   }, [props.id]);
 
   return (
-    <div>
+    <div className="client-address">
       {address && <p>{`Address: ${address.addresses_one}, ${address.addresses_city}, ${address.addresses_state} ${address.addresses_postal_code}`}</p>}
     </div>
   );

@@ -50,7 +50,7 @@ export default function Login(props) {
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
-                placeholder="Username"
+                placeholder="Email"
               />
             </div>
             <div>

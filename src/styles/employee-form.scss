@@ -1,0 +1,39 @@
+.employee-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  box-shadow: 0 1px 11px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+
+  .employee-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      margin: 15px;
+      width: 100%;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid black;
+    }
+
+    select {
+      margin: 15px;
+      width: 100%;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid black;
+    }
+
+    button {
+      margin: 15px;
+      width: 100%;
+    }
+  }
+}
