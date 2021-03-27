@@ -5,8 +5,11 @@ const Address = (props) => {
   const [address, setAddress] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`https://bw-spectral-cs-be.herokuapp.com/get-client-address/${props.id}`)
+    axios({
+      method: "get",
+      url: `http://127.0.0.1:5000/get-client-address/${props.id}`,
+      withCredentials: true 
+    })
       .then((response) => {
         setAddress(response.data);
       })

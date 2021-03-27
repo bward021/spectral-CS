@@ -51,18 +51,22 @@ const StopWatch = (props) => {
     axios(
       {
         method: "post",
-        url: "https://bw-spectral-cs-be.herokuapp.com/new-duration-instance",
+        url: "http://127.0.0.1:5000/new-duration-instance",
         data: {
           id: props.data.duration_id,
           date: props.date,
           data: overallTime
-        }
+        },
+        withCredentials: true,        
       }
     )
     .then((response) => {
       console.log(response)
-      setCounting(!counting)
+      if (setCounting === true){
+        setCounting(!counting)
+      }
       setOverallTime(0)
+
     })
     .catch((error) => {
       console.log("error in stopwatch: ", error);

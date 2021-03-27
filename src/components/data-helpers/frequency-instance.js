@@ -6,14 +6,15 @@ const FrequencyInstance = (props) => {
   const [firstInstance, setFirstInstance] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://bw-spectral-cs-be.herokuapp.com/get-frequency-instance?id=${props.id}&date=${props.date}`
-      )
+    axios({
+      method: "get",
+      url: `http://127.0.0.1:5000/get-frequency-instance?id=${props.id}&date=${props.date}`,
+      withCredentials: true,
+    })
       .then((response) => {
         if (response.data === "No data found") {
           setFirstInstance(true);
-          setData(0)
+          setData(0);
         } else {
           setData(response.data.frequency_instance_data);
         }
@@ -25,11 +26,15 @@ const FrequencyInstance = (props) => {
 
   const handleClick = (num) => {
     if (firstInstance === true) {
-      axios
-        .post(`https://bw-spectral-cs-be.herokuapp.com/new-frequency-instance`, {
-          id: props.id,
-          data: data + num,
-          date: props.date,
+      axios({
+          method: "post",
+          url: `http://127.0.0.1:5000/new-frequency-instance`,
+          data: {
+            id: props.id,
+            data: data + num,
+            date: props.date,
+          },
+          withCredentials: true,
         })
         .then(() => {
           setData(data + num);
@@ -39,11 +44,15 @@ const FrequencyInstance = (props) => {
           console.log("error in new frequency: ", error);
         });
     } else {
-      axios
-        .patch(`https://bw-spectral-cs-be.herokuapp.com/update-frequency-instance/${props.id}`, {
+      axios({
+        method: "patch",
+        url: `http://127.0.0.1:5000/update-frequency-instance/${props.id}`,
+        data: {
           data: data + num,
           date: props.date,
-        })
+        },
+        withCredentials: true,
+      })
         .then(() => {
           setData(data + num);
         })
@@ -54,7 +63,7 @@ const FrequencyInstance = (props) => {
   };
 
   return (
-    <div className="frequency-button-wrapper" >
+    <div className="frequency-button-wrapper">
       <input
         type="button"
         onClick={() => {
@@ -63,10 +72,11 @@ const FrequencyInstance = (props) => {
         value="-"
         disabled={data <= 0 ? true : false}
       />
-      <p>{props.name}
+      <p>
+        {props.name}
         <div>{data}</div>
       </p>
-      
+
       <input
         type="button"
         onClick={() => {

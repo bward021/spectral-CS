@@ -9,7 +9,11 @@ const TrialData = (props) => {
   // const [instanceData, setInstanceData] = useState(null)
 
   useEffect(() => {
-    axios.get(`https://bw-spectral-cs-be.herokuapp.com/get-all-client-trials/${props.id}`)
+    axios({
+      method: "get",
+      url: `http://127.0.0.1:5000/get-all-client-trials/${props.id}`,
+      withCredentials: true
+    })
     .then((response) => {
       console.log(response)
       setTrials(response.data)

@@ -3,7 +3,8 @@ import Chartjs from "chart.js";
 
 const FrequencyGraph = (props) => {
   const chartContainer = useRef(null);
-  const [setChartInstance] = useState(null);
+  // eslint-disable-next-line
+  const [chartinstance, setChartInstance] = useState(null);
   
   const chartConfig = {
     type: "line",

@@ -7,13 +7,15 @@ const Duration = (props) => {
   const [id] = useState(props.id);
 
   const handleSubmit = (e) => {
-    axios.post(
-      `https://bw-spectral-cs-be.herokuapp.com/add-client-duration/${id}`,
-      {
+    axios({
+      method: "post",
+      url: `http://127.0.0.1:5000/add-client-duration/${id}`,
+      data: {
         name: name,
         description: description,
-      }
-    )
+      },
+      withCredentials: true
+    })
     .then((response) => {
       setName("");
       setDescription("");

@@ -10,7 +10,8 @@ const EmployeeManager = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `https://bw-spectral-cs-be.herokuapp.com/get-all-employees`,
+      url: `http://127.0.0.1:5000/get-all-employees`,
+      withCredentials: true,
     })
       .then((response) => {
         console.log(response);
@@ -26,10 +27,11 @@ const EmployeeManager = (props) => {
     console.log(employee)
     axios({
       method: "post",
-      url: `https://bw-spectral-cs-be.herokuapp.com/delete-employee`,
+      url: `http://127.0.0.1:5000/delete-employee`,
       data: {
         id: employee.employees_id,
-      }
+      },
+      withCredentials: true,
     })
     .then((response) => {
       console.log(response)

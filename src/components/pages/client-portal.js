@@ -13,8 +13,11 @@ const ClientPortal = () => {
   const [clientInfo, setClientInfo] = useState({})
 
   useEffect(() => {
-    axios
-      .get(`https://bw-spectral-cs-be.herokuapp.com/clients/${slug}`)
+    axios({
+      method: "get",
+      url: `http://127.0.0.1:5000/clients/${slug}`,
+      withCredentials: true
+    })
       .then((response) => {
         setClientInfo(response.data)
         console.log(response.data)

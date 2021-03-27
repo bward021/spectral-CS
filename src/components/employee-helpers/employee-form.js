@@ -21,15 +21,19 @@ const EmployeeForm = (props) => {
 
   const handleSubmit = (e) => {
     if (props.employee) {
-      axios.patch("https://bw-spectral-cs-be.herokuapp.com/edit-employee",
-      {
+      axios({
+        method: "patch",
+        url: "http://127.0.0.1:5000/edit-employee",
+      data: {
         id: props.employee.employees_id,
         firstname,
         lastname,
         email,
         password,
         permissions,
-      })
+      },
+      withCredentials: true
+    })
       .then((response)=>{
         props.setEmployees(response.data)
         setFirstname("");
@@ -42,14 +46,18 @@ const EmployeeForm = (props) => {
         console.log("error in update employee: ", error);
       })
     } else {
-      axios.post("https://bw-spectral-cs-be.herokuapp.com/add-employee",
-      {
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:5000/add-employee",
+        data: {
         firstname,
         lastname,
         email,
         password,
         permissions,
-      })
+      },
+      withCredentials: true,
+    })
       .then((response)=>{
         props.setEmployees(response.data)
         setFirstname("");

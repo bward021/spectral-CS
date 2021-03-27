@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Clients from "./components/pages/clients";
 import Login from "./components/pages/login";
 import ClientPortal from "./components/pages/client-portal";
@@ -15,7 +15,6 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
         <NavigationComponent />
         <div>
           <Switch>
@@ -46,7 +45,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
     </div>
   );
 }

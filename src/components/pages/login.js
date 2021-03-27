@@ -1,29 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 
+import AuthContext from "../Context/AuthContext";
 import LoginImage from "../../assets/images/Spectral.PNG"
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const { handleSuccessfulLogin, setPermissions } = useContext(AuthContext);
+
   let history = useHistory()
 
   const handleSubmit = (e) => {
-    axios
-      .post(
-        "https://bw-spectral-cs-be.herokuapp.com/login",
-        {
+    axios({
+        method: "post",
+        url: "http://127.0.0.1:5000/login",
+        data: {
             username: {username},
             password: {password},
           },
-      )
+          withCredentials: true
+        })
       .then((response) => {
         console.log(response)
         if (response.data.id || response.data.id === 1) {
-          props.setLoggedIn("loggedin")
-          props.setPermissions(response.data.permissions)
+          handleSuccessfulLogin()
+          setPermissions(response.data.permissions)
           history.push("/clients")
         }
       })

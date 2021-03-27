@@ -9,8 +9,11 @@ const Clients = (props) => {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://bw-spectral-cs-be.herokuapp.com/clients")
+    axios({
+      method: "get",
+      url: "http://127.0.0.1:5000/clients",
+      withCredentials: true
+    })
       .then((response) => {
         setClients(response.data);
       })

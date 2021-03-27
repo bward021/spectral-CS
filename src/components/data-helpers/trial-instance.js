@@ -8,21 +8,22 @@ const TrialInstanceData = (props) => {
   const [correct, setCorrect] = useState(0);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://bw-spectral-cs-be.herokuapp.com/check-trial-instance?id=${props.trial.trial_id}&date=${props.date}`
-      )
+    axios({
+      method: "get",
+      url: `http://127.0.0.1:5000/check-trial-instance?id=${props.trial.trial_id}&date=${props.date}`,
+      withCredentials: true,
+    })
       .then((response) => {
         if (response.data === "No data found") {
           setFirstInstance(true);
-          setCorrect(0)
-          setIncorrect(0)
-          setPrompted(0)
+          setCorrect(0);
+          setIncorrect(0);
+          setPrompted(0);
         } else {
           console.log(response.data);
-          setCorrect(response.data.trial_instance_correct)
-          setIncorrect(response.data.trial_instance_incorrect)
-          setPrompted(response.data.trial_instance_prompted)
+          setCorrect(response.data.trial_instance_correct);
+          setIncorrect(response.data.trial_instance_incorrect);
+          setPrompted(response.data.trial_instance_prompted);
         }
       })
       .catch((error) => {
@@ -30,111 +31,133 @@ const TrialInstanceData = (props) => {
       });
   }, [props.trial.trial_id, props.date]);
 
-
   const handleIncorrect = (num) => {
     if (firstInstance === true) {
-      axios.post("https://bw-spectral-cs-be.herokuapp.com/new-trial-instance",
-        {
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:5000/new-trial-instance",
+        data: {
           id: props.trial.trial_id,
           date: props.date,
-          incorrect: (incorrect + num),
+          incorrect: incorrect + num,
           prompted: 0,
           correct: 0,
+        },
+        withCredentials: true,
+      })
+        .then((response) => {
+          console.log(response);
+          setFirstInstance(false);
+          setIncorrect(incorrect + num);
         })
-        .then(response => {
-          console.log(response)
-          setFirstInstance(false)
-          setIncorrect((incorrect + num))
-        })
-        .catch(error => {
-          console.log("error in incorrect: ", error)
-        })
+        .catch((error) => {
+          console.log("error in incorrect: ", error);
+        });
     } else {
-      axios.patch("https://bw-spectral-cs-be.herokuapp.com/update-trial-instance-incorrect",
-      {
-        id: props.trial.trial_id,
-        data: (incorrect + num),
-        date: props.date,
+      axios({
+        method: "patch",
+        url: "http://127.0.0.1:5000/update-trial-instance-incorrect",
+        data: {
+          id: props.trial.trial_id,
+          data: incorrect + num,
+          date: props.date,
+        },
+        withCredentials: true,
       })
-      .then(response => {
-        console.log(response)
-        setIncorrect((incorrect + num))
-      })
-      .catch(error => {
-        console.log("error in Incorrect: ", error)
-      })
+        .then((response) => {
+          console.log(response);
+          setIncorrect(incorrect + num);
+        })
+        .catch((error) => {
+          console.log("error in Incorrect: ", error);
+        });
     }
   };
-
 
   const handlePrompted = (num) => {
     if (firstInstance === true) {
-      axios.post("https://bw-spectral-cs-be.herokuapp.com/new-trial-instance",
-        {
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:5000/new-trial-instance",
+        data: {
           id: props.trial.trial_id,
           date: props.date,
           incorrect: 0,
-          prompted: (prompted + num),
+          prompted: prompted + num,
           correct: 0,
-        })
-        .then(response => {
-          console.log(response)
-          setFirstInstance(false)
-          setPrompted((prompted + num))
-        })
-        .catch(error => {
-          console.log("error in Prompted: ", error)
-        })
-    } else {
-      axios.patch("https://bw-spectral-cs-be.herokuapp.com/update-trial-instance-prompted",
-      {
-        id: props.trial.trial_id,
-        data: (prompted + num),
-        date: props.date,
+        },
+        withCredentials: true,
       })
-      .then(response => {
-        console.log(response)
-        setPrompted((prompted + num))
+        .then((response) => {
+          console.log(response);
+          setFirstInstance(false);
+          setPrompted(prompted + num);
+        })
+        .catch((error) => {
+          console.log("error in Prompted: ", error);
+        });  
+    } 
+    if (firstInstance === false) {
+      axios({
+        method: "patch",
+        url: "http://127.0.0.1:5000/update-trial-instance-prompted",
+        data: {
+          id: props.trial.trial_id,
+          data: prompted + num,
+          date: props.date,
+        },
+        withCredentials: true,
       })
-      .catch(error => {
-        console.log("error in Prompted: ", error)
-      })
+        .then((response) => {
+          console.log(response);
+          setPrompted(prompted + num);
+        })
+        .catch((error) => {
+          console.log("error in Prompted: ", error);
+        });
     }
   };
 
-
   const handleCorrect = (num) => {
     if (firstInstance === true) {
-      axios.post("https://bw-spectral-cs-be.herokuapp.com/new-trial-instance",
-        {
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:5000/new-trial-instance",
+        data: {
           id: props.trial.trial_id,
           date: props.date,
           incorrect: 0,
           prompted: 0,
-          correct: (correct + num),
+          correct: correct + num,
+        },
+        withCredentials: true,
+      })
+        .then((response) => {
+          console.log(response);
+          setFirstInstance(false);
+          setCorrect(correct + num);
         })
-        .then(response => {
-          console.log(response)
-          setFirstInstance(false)
-          setCorrect((correct + num))
-        })
-        .catch(error => {
-          console.log("error in Correct: ", error)
-        })
+        .catch((error) => {
+          console.log("error in Correct: ", error);
+        });
     } else {
-      axios.patch("https://bw-spectral-cs-be.herokuapp.com/update-trial-instance-correct",
-      {
-        id: props.trial.trial_id,
-        data: (correct + num),
-        date: props.date,
+      axios({
+        method: "patch",
+        url: "http://127.0.0.1:5000/update-trial-instance-correct",
+        data: {
+          id: props.trial.trial_id,
+          data: correct + num,
+          date: props.date,
+        },
+        withCredentials: true,
       })
-      .then(response => {
-        console.log(response)
-        setCorrect((correct + num))
-      })
-      .catch(error => {
-        console.log("error in Correct: ", error)
-      })
+        .then((response) => {
+          console.log(response);
+          setCorrect(correct + num);
+        })
+        .catch((error) => {
+          console.log("error in Correct: ", error);
+        });
     }
   };
 
@@ -143,7 +166,7 @@ const TrialInstanceData = (props) => {
       <h2>{props.trial.trial_name}</h2>
       <p>{props.trial.trial_description}</p>
       <div className="trial-buttons-wrapper">
-        <div className="trial-button" >
+        <div className="trial-button">
           <button
             onClick={() => {
               handleIncorrect(-1);
@@ -160,8 +183,8 @@ const TrialInstanceData = (props) => {
           >
             +
           </button>
-        </div >
-        <div className="trial-button" >
+        </div>
+        <div className="trial-button">
           <button
             onClick={() => {
               handlePrompted(-1);
@@ -179,7 +202,7 @@ const TrialInstanceData = (props) => {
             +
           </button>
         </div>
-        <div className="trial-button" >
+        <div className="trial-button">
           <button
             onClick={() => {
               handleCorrect(-1);

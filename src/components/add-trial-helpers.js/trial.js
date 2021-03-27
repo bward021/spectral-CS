@@ -8,14 +8,16 @@ const Trial = (props) => {
   const [id] = useState(props.id);
 
   const handleSubmit = (e) => {
-    axios.post(
-      `https://bw-spectral-cs-be.herokuapp.com/add-client-trial/${id}`,
-      {
+    axios({
+      method: "post",
+      url: `http://127.0.0.1:5000/add-client-trial/${id}`,
+      data: {
         name: name,
         category: category,
         description: description,
-      }
-    )
+      },
+      withCredentials: true
+    })
     .then((response) => {
       setName("");
       setCategory("");

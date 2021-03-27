@@ -15,9 +15,10 @@ const AddClient = (props) => {
   const [postalCode, setPostalCode] = useState("")
 
   const handleSubmit = (e) => {
-    axios.post(
-      "https://bw-spectral-cs-be.herokuapp.com/add-client",
-      {
+    axios({
+      method: "post",
+      url: "http://127.0.0.1:5000/add-client",
+      data: {
         firstName: firstName,
         lastName: lastName,
         age: age,
@@ -29,7 +30,8 @@ const AddClient = (props) => {
         st: st,
         postalCode: postalCode,
         },
-    )
+        withCredentials: true
+      })
     .then(response => {
       setFirstName("")
       setLastName("")
