@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TrialInstanceData from './trial-instance';
 
+import { API_URL } from "../api_url/api-url"
+
 const TrialData = (props) => {
 
   const [trials, setTrials] = useState([])
@@ -11,7 +13,7 @@ const TrialData = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-all-client-trials/${props.id}`,
+      url: `${API_URL}get-all-client-trials/${props.id}`,
       withCredentials: true
     })
     .then((response) => {

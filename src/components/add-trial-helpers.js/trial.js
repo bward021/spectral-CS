@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+import { API_URL } from "../api_url/api-url"
+
 const Trial = (props) => {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
@@ -10,7 +12,7 @@ const Trial = (props) => {
   const handleSubmit = (e) => {
     axios({
       method: "post",
-      url: `http://127.0.0.1:5000/add-client-trial/${id}`,
+      url: `${API_URL}add-client-trial/${id}`,
       data: {
         name: name,
         category: category,

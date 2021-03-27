@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import { API_URL } from "../api_url/api-url"
+
 const Clients = (props) => {
   const [loggedIn] = useState(props.loggedIn);
   const [permissions] = useState(props.permissions);
@@ -11,7 +13,7 @@ const Clients = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://127.0.0.1:5000/clients",
+      url: `${API_URL}clients`,
       withCredentials: true
     })
       .then((response) => {

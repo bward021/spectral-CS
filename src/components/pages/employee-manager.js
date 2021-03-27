@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import EmployeeForm from "../employee-helpers/employee-form";
 
+import { API_URL } from "../api_url/api-url"
+
 const EmployeeManager = (props) => {
   const [employees, setEmployees] = useState([]);
   const [renderForm, setRenderForm] = useState(false)
@@ -10,7 +12,7 @@ const EmployeeManager = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-all-employees`,
+      url: `${API_URL}get-all-employees`,
       withCredentials: true,
     })
       .then((response) => {
@@ -27,7 +29,7 @@ const EmployeeManager = (props) => {
     console.log(employee)
     axios({
       method: "post",
-      url: `http://127.0.0.1:5000/delete-employee`,
+      url: `${API_URL}delete-employee`,
       data: {
         id: employee.employees_id,
       },

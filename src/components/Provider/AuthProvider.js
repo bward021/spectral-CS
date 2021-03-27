@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { API_URL } from "../api_url/api-url"
+
 
 import { Redirect } from "react-router-dom";
 
@@ -12,7 +14,7 @@ const AuthProvider = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://localhost:5000/api/v1/logged-in`,
+      url: `${API_URL}api/v1/logged-in`,
       withCredentials: true,
     })
       .then((response) => {
@@ -30,7 +32,7 @@ const AuthProvider = (props) => {
     console.log("logout");
     axios({
       method: "post",
-      url: `http://localhost:5000/api/v1/logout`,
+      url: `${API_URL}api/v1/logout`,
       withCredentials: true,
     })
       .then(() => {

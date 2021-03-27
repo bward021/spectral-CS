@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import { API_URL } from "../api_url/api-url"
+
+
 const EmployeeForm = (props) => {
   const [firstname, setFirstname] = useState(null);
   const [lastname, setLastname] = useState(null);
@@ -23,7 +26,7 @@ const EmployeeForm = (props) => {
     if (props.employee) {
       axios({
         method: "patch",
-        url: "http://127.0.0.1:5000/edit-employee",
+        url: `${API_URL}edit-employee`,
       data: {
         id: props.employee.employees_id,
         firstname,
@@ -48,7 +51,7 @@ const EmployeeForm = (props) => {
     } else {
       axios({
         method: "post",
-        url: "http://127.0.0.1:5000/add-employee",
+        url: `${API_URL}add-employee`,
         data: {
         firstname,
         lastname,

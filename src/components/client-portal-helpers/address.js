@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { API_URL } from "../api_url/api-url"
+
 const Address = (props) => {
   const [address, setAddress] = useState([]);
 
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-client-address/${props.id}`,
+      url: `${API_URL}get-client-address/${props.id}`,
       withCredentials: true 
     })
       .then((response) => {

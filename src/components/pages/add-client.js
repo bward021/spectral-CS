@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from "axios";
 
+import { API_URL } from "../api_url/api-url"
+
 const AddClient = (props) => {
 
   const [firstName, setFirstName] = useState("")
@@ -17,7 +19,7 @@ const AddClient = (props) => {
   const handleSubmit = (e) => {
     axios({
       method: "post",
-      url: "http://127.0.0.1:5000/add-client",
+      url: `${API_URL}add-client`,
       data: {
         firstName: firstName,
         lastName: lastName,

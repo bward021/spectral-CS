@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+import { API_URL } from "../api_url/api-url"
+
 const Frequency = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -9,7 +11,7 @@ const Frequency = (props) => {
   const handleSubmit = (e) => {
     axios({
       method: "post",
-      url: `http://127.0.0.1:5000/add-client-frequency/${id}`,
+      url: `${API_URL}add-client-frequency/${id}`,
       data: {
         name: name,
         description: description,

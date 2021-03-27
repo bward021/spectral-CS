@@ -5,6 +5,8 @@ import { Link, useParams } from "react-router-dom"
 import ClientInfo from "../client-portal-helpers/client-information"
 import FrequencyGraph from '../client-portal-helpers/frequency-graph';
 
+import { API_URL } from "../api_url/api-url"
+
 
 const ClientPortal = () => {
 
@@ -15,7 +17,7 @@ const ClientPortal = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/clients/${slug}`,
+      url: `${API_URL}clients/${slug}`,
       withCredentials: true
     })
       .then((response) => {

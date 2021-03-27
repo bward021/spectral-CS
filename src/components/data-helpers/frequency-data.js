@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import FrequencyInstance from './frequency-instance';
+import { API_URL } from "../api_url/api-url"
+
 
 const FrequencyData = (props) => {
 
@@ -9,7 +11,7 @@ const FrequencyData = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-frequency/${props.id}`,
+      url: `${API_URL}get-frequency/${props.id}`,
       withCredentials: true
     })
       .then((response) => {

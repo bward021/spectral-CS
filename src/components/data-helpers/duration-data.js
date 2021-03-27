@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import StopWatch from '../duration-helpers/stopwatch';
+import { API_URL } from "../api_url/api-url"
+
 
 const DurationData = (props) => {
 
@@ -9,7 +11,7 @@ const DurationData = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-all-client-duration/${props.id}`,
+      url: `${API_URL}get-all-client-duration/${props.id}`,
       withCredentials: true
     })
     .then((response)=>{

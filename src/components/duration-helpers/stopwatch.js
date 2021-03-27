@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
 
+import { API_URL } from "../api_url/api-url"
+
 const StopWatch = (props) => {
   const [counting, setCounting] = useState(false);
   const [firstClick, setFirstClick] = useState(false);
@@ -51,7 +53,7 @@ const StopWatch = (props) => {
     axios(
       {
         method: "post",
-        url: "http://127.0.0.1:5000/new-duration-instance",
+        url: `${API_URL}new-duration-instance`,
         data: {
           id: props.data.duration_id,
           date: props.date,

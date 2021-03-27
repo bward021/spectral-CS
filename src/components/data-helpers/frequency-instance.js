@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { API_URL } from "../api_url/api-url"
+
 const FrequencyInstance = (props) => {
   const [data, setData] = useState(0);
   const [firstInstance, setFirstInstance] = useState(false);
@@ -8,7 +10,7 @@ const FrequencyInstance = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/get-frequency-instance?id=${props.id}&date=${props.date}`,
+      url: `${API_URL}get-frequency-instance?id=${props.id}&date=${props.date}`,
       withCredentials: true,
     })
       .then((response) => {
@@ -28,7 +30,7 @@ const FrequencyInstance = (props) => {
     if (firstInstance === true) {
       axios({
           method: "post",
-          url: `http://127.0.0.1:5000/new-frequency-instance`,
+          url: `${API_URL}new-frequency-instance`,
           data: {
             id: props.id,
             data: data + num,
@@ -46,7 +48,7 @@ const FrequencyInstance = (props) => {
     } else {
       axios({
         method: "patch",
-        url: `http://127.0.0.1:5000/update-frequency-instance/${props.id}`,
+        url: `${API_URL}update-frequency-instance/${props.id}`,
         data: {
           data: data + num,
           date: props.date,

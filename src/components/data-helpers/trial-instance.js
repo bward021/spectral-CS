@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
+import { API_URL } from "../api_url/api-url"
+
 const TrialInstanceData = (props) => {
   const [firstInstance, setFirstInstance] = useState(false);
   const [incorrect, setIncorrect] = useState(0);
@@ -10,7 +12,7 @@ const TrialInstanceData = (props) => {
   useEffect(() => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:5000/check-trial-instance?id=${props.trial.trial_id}&date=${props.date}`,
+      url: `${API_URL}check-trial-instance?id=${props.trial.trial_id}&date=${props.date}`,
       withCredentials: true,
     })
       .then((response) => {
@@ -35,7 +37,7 @@ const TrialInstanceData = (props) => {
     if (firstInstance === true) {
       axios({
         method: "post",
-        url: "http://127.0.0.1:5000/new-trial-instance",
+        url: `${API_URL}new-trial-instance`,
         data: {
           id: props.trial.trial_id,
           date: props.date,
@@ -56,7 +58,7 @@ const TrialInstanceData = (props) => {
     } else {
       axios({
         method: "patch",
-        url: "http://127.0.0.1:5000/update-trial-instance-incorrect",
+        url: `${API_URL}update-trial-instance-incorrect`,
         data: {
           id: props.trial.trial_id,
           data: incorrect + num,
@@ -78,7 +80,7 @@ const TrialInstanceData = (props) => {
     if (firstInstance === true) {
       axios({
         method: "post",
-        url: "http://127.0.0.1:5000/new-trial-instance",
+        url: `${API_URL}new-trial-instance`,
         data: {
           id: props.trial.trial_id,
           date: props.date,
@@ -100,7 +102,7 @@ const TrialInstanceData = (props) => {
     if (firstInstance === false) {
       axios({
         method: "patch",
-        url: "http://127.0.0.1:5000/update-trial-instance-prompted",
+        url: `${API_URL}update-trial-instance-prompted`,
         data: {
           id: props.trial.trial_id,
           data: prompted + num,
@@ -122,7 +124,7 @@ const TrialInstanceData = (props) => {
     if (firstInstance === true) {
       axios({
         method: "post",
-        url: "http://127.0.0.1:5000/new-trial-instance",
+        url: `${API_URL}new-trial-instance`,
         data: {
           id: props.trial.trial_id,
           date: props.date,
@@ -143,7 +145,7 @@ const TrialInstanceData = (props) => {
     } else {
       axios({
         method: "patch",
-        url: "http://127.0.0.1:5000/update-trial-instance-correct",
+        url: `${API_URL}update-trial-instance-correct`,
         data: {
           id: props.trial.trial_id,
           data: correct + num,

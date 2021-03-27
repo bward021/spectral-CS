@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import axios from "axios"
 import { useHistory } from "react-router-dom"
+import { API_URL } from "../api_url/api-url"
+
 
 import AuthContext from "../Context/AuthContext";
 import LoginImage from "../../assets/images/Spectral.PNG"
@@ -16,7 +18,7 @@ export default function Login(props) {
   const handleSubmit = (e) => {
     axios({
         method: "post",
-        url: "http://127.0.0.1:5000/login",
+        url: `${API_URL}login`,
         data: {
             username: {username},
             password: {password},
