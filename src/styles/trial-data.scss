@@ -8,16 +8,29 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
-    height: 390px;
+    align-items: center;
+    height: 100%;
     width: 80%;
     overflow: hidden;
     overflow-y: scroll;
     cursor: pointer;
-    // direction: rtl;
+
+    
+    @include responsive(tab-land) {
+      height: 70%;
+    }
+
+    @include responsive(tab-port) {
+      height: 60%;
+    }
+
+    @include responsive(phone) {
+      height: 55%;
+    }
+
     /* width */
     &::-webkit-scrollbar {
-      width: 5px;
+      width: 3px;
     }
 
     /* Track */
@@ -57,16 +70,29 @@
     .trial-instance-container {
       display: flex;
       flex-direction: column;
-      padding: 25px;
+      padding: 5px;
+      margin-top: 25px;
+      margin-bottom: 10px;
       border-radius: 90px;
       box-shadow: 0 -1px 11px rgba(0, 0, 0, 0.2);
       width: 80%;
-      height: 80%;
+      height: 100%;
       justify-content: center;
       align-items: center;
-
+     
       .trial-buttons-wrapper {
         display: flex;
+        @include responsive(tab-land) {
+          flex-direction: column;
+        }
+
+        @include responsive(tab-port) {
+          flex-direction: column;
+        }
+  
+        @include responsive(phone) { 
+          flex-direction: column;
+        }
 
         .trial-button {
           display: flex;

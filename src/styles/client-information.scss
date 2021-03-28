@@ -83,7 +83,19 @@
     align-items: center;
     text-align: center;
     font-size: 25px;
-
+    
+    @include responsive(tab-land) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 5px;
+      width: 100%;
+      grid-template-areas: 
+      "first first "
+      "last last"    
+      "age age"
+      "gender gender"
+      "supervisor supervisor";
+      font-size: 16px;
+    }
   }
 
   .client-address{
@@ -92,6 +104,11 @@
     border-radius: 25px;
     font-size: 25px;
     margin-top: 35px;
+
+    @include responsive(tab-land) {
+      width: 100%;
+      font-size: 16px;
+    }
   }
 
 }

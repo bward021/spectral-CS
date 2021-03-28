@@ -1,3 +1,17 @@
 body {
   margin: 0px;
+  font-size: 22px;
+
+  @include responsive(tab-land) {
+    font-size: 20px;
+  }
+
+  @include responsive(tab-port) {
+    font-size: 18px;
+  }
+
+  @include responsive(phone) {
+    font-size: 16px;
+  }
+
 }

@@ -65,5 +65,24 @@
     grid-gap: 15px;
     width: 100%;
     grid-template-areas: "L L R";
+
+    @include responsive(tab-land) {
+      font-size: 18px;
+      
+    }
+  
+    @include responsive(tab-port) {
+      font-size: 16px;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      grid-template-areas: 
+        "L L"
+        "R R";
+    }
+  
+    @include responsive(phone) {
+      font-size: 13px;
+    } 
+
   }
 }
