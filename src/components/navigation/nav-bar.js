@@ -35,14 +35,14 @@ const NavigationComponent = (props) => {
             <NavLink exact to="/clients">
               Home
             </NavLink>
-            <div className="logout-button">
-              <button onClick={handleSuccessfulLogout}>logout</button>
-            </div>
+          </div>
+          <div className="logout-button">
+            <button onClick={handleSuccessfulLogout}>logout</button>
           </div>
         </div>
       );
-    } else{
-      return<div></div>
+    } else {
+      return <div></div>;
     }
   };
 
