@@ -23,7 +23,7 @@ const NavigationComponent = (props) => {
           <div className="nav-link-wrapper">
             <NavLink to="/employee-manager">Employees</NavLink>
           </div>
-          <div>
+          <div className="logout-button">
             <button onClick={handleSuccessfulLogout}>logout</button>
           </div>
         </div>
