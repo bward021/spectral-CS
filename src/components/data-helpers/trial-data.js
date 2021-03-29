@@ -17,7 +17,6 @@ const TrialData = (props) => {
       withCredentials: true
     })
     .then((response) => {
-      console.log(response)
       setTrials(response.data)
     })
     .catch((error) => {

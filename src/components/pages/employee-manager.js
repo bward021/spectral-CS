@@ -16,7 +16,6 @@ const EmployeeManager = (props) => {
       withCredentials: true,
     })
       .then((response) => {
-        console.log(response);
         setEmployees(response.data);
       })
       .catch((error) => {
@@ -26,7 +25,6 @@ const EmployeeManager = (props) => {
   }, []);
 
   const handleDelete = (employee) => {
-    console.log(employee)
     axios({
       method: "post",
       url: `${API_URL}delete-employee`,
@@ -36,7 +34,6 @@ const EmployeeManager = (props) => {
       withCredentials: true,
     })
     .then((response) => {
-      console.log(response)
       setEmployees(response.data)
     })
     .catch((error) => {

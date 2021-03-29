@@ -63,7 +63,6 @@ const StopWatch = (props) => {
       }
     )
     .then((response) => {
-      console.log(response)
       if (setCounting === true){
         setCounting(!counting)
       }

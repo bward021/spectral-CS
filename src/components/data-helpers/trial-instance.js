@@ -22,8 +22,7 @@ const TrialInstanceData = (props) => {
           setIncorrect(0);
           setPrompted(0);
         } else {
-          console.log(response.data);
-          setCorrect(response.data.trial_instance_correct);
+          setCorrect(response.data.trkial_instance_correct);
           setIncorrect(response.data.trial_instance_incorrect);
           setPrompted(response.data.trial_instance_prompted);
         }
@@ -48,7 +47,6 @@ const TrialInstanceData = (props) => {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           setFirstInstance(false);
           setIncorrect(incorrect + num);
         })
@@ -67,7 +65,6 @@ const TrialInstanceData = (props) => {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           setIncorrect(incorrect + num);
         })
         .catch((error) => {
@@ -91,7 +88,6 @@ const TrialInstanceData = (props) => {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           setFirstInstance(false);
           setPrompted(prompted + num);
         })
@@ -111,7 +107,6 @@ const TrialInstanceData = (props) => {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           setPrompted(prompted + num);
         })
         .catch((error) => {
@@ -135,7 +130,6 @@ const TrialInstanceData = (props) => {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           setFirstInstance(false);
           setCorrect(correct + num);
         })
@@ -154,7 +148,6 @@ const TrialInstanceData = (props) => {
         withCredentials: true,
       })
         .then((response) => {
-          console.log(response);
           setCorrect(correct + num);
         })
         .catch((error) => {

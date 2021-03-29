@@ -1,14 +1,16 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from "react-router-dom"
 
 import ClientInfo from "../client-portal-helpers/client-information"
 import FrequencyGraph from '../client-portal-helpers/frequency-graph';
 
 import { API_URL } from "../api_url/api-url"
-
+import AuthContext from '../Context/AuthContext';
 
 const ClientPortal = () => {
+
+  const { permissions } = useContext(AuthContext);
 
   let { slug } = useParams();
   const [clientId] = useState(slug)
@@ -22,7 +24,6 @@ const ClientPortal = () => {
     })
       .then((response) => {
         setClientInfo(response.data)
-        console.log(response.data)
       })
       .catch((error) => {
         console.log("error in Clients: ", error);
@@ -36,7 +37,7 @@ const ClientPortal = () => {
       </div>
       <div className="client-portal-right-side">
         <h1>{clientInfo.client_firstname}{" "}{clientInfo.client_lastname}</h1>
-        <Link to={`/add-client-trial/${clientId}`}>Add Client Trial</Link>
+        {permissions === "Admin" && <Link to={`/add-client-trial/${clientId}`}>Add Client Trial</Link>}
         <FrequencyGraph />
       </div>
     </div>

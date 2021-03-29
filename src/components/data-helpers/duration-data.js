@@ -15,7 +15,6 @@ const DurationData = (props) => {
       withCredentials: true
     })
     .then((response)=>{
-      console.log(response)
       setDurationData(response.data)
     })
     .catch((error)=>{

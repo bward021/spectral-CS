@@ -33,7 +33,7 @@ const FrequencyGraph = (props) => {
   
   
   return (
-    <div>
+    <div className="graph-wrapper">
       <canvas ref={chartContainer} />
     </div>
   );

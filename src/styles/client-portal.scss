@@ -1,6 +1,18 @@
 .client-portal-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @include responsive(tab-land) {
+    font-size: 20px;
+  }
+
+  @include responsive(tab-port) {
+    font-size: 18px;
+  }
+
+  @include responsive(phone) {
+    grid-template-columns: 1fr;
+  }
   
   .client-information-wrapper{
     display: flex;
@@ -10,5 +22,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    .graph-wrapper{
+      height: 300px;
+    }
+
   }
 }

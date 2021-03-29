@@ -3,13 +3,15 @@ import React, { useState, useEffect } from "react";
 import { API_URL } from "../api_url/api-url"
 
 
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 import AuthContext from "../Context/AuthContext";
 
 const AuthProvider = (props) => {
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
   const [permissions, setPermissions] = useState("")
+
+  let history  = useHistory()
 
   useEffect(() => {
     axios({
@@ -18,18 +20,18 @@ const AuthProvider = (props) => {
       withCredentials: true,
     })
       .then((response) => {
-        console.log(response);
-        if (response.data === "User logged in via cookie") {
+        if (response.data.employees_permissions) {
           setLoggedInStatus("LOGGED_IN");
+          setPermissions(response.data.employees_permissions)
+          history.push("/clients")
         }
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [history]);
 
   const handleSuccessfulLogout = () => {
-    console.log("logout");
     axios({
       method: "post",
       url: `${API_URL}api/v1/logout`,
@@ -37,7 +39,7 @@ const AuthProvider = (props) => {
     })
       .then(() => {
         setLoggedInStatus("NOT_LOGGED_IN");
-        <Redirect to="/" />;
+        history.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -45,9 +47,8 @@ const AuthProvider = (props) => {
   };
 
   const handleSuccessfulLogin = () => {
-    console.log("handleLogin");
     setLoggedInStatus("LOGGED_IN");
-    return <Redirect to="/" />;
+    return <Redirect to="/clients" />;
   };
 
   const state = {

@@ -26,7 +26,6 @@ export default function Login(props) {
           withCredentials: true
         })
       .then((response) => {
-        console.log(response)
         if (response.data.id || response.data.id === 1) {
           handleSuccessfulLogin()
           setPermissions(response.data.permissions)
@@ -61,7 +60,7 @@ export default function Login(props) {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);

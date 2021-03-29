@@ -11,14 +11,12 @@ const Data = (props) => {
   const [clientId] = useState(slug);
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
 
-  console.log(date);
   return (
     <div>
       <div className="date-wrapper">
         <input
           type="date"
           onChange={(e) => {
-            console.log('changed')
             setDate(e.target.value);
           }}
           value={date}
