@@ -26,7 +26,7 @@ const EmployeeManager = (props) => {
 
   const handleDelete = (employee) => {
     axios({
-      method: "post",
+      method: "delete",
       url: `${API_URL}delete-employee`,
       data: {
         id: employee.employees_id,
