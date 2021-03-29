@@ -35,7 +35,7 @@ const NavigationComponent = (props) => {
             <NavLink exact to="/clients">
               Home
             </NavLink>
-            <div>
+            <div className="logout-button">
               <button onClick={handleSuccessfulLogout}>logout</button>
             </div>
           </div>
