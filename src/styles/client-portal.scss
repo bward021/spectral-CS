@@ -22,6 +22,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    a {
+      text-decoration: none;
+      border-radius: 25px;
+      padding: 20px;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
     
     .graph-wrapper{
       height: 600px;
