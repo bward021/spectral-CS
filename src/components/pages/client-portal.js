@@ -38,7 +38,7 @@ const ClientPortal = () => {
       <div className="client-portal-right-side">
         <h1>{clientInfo.client_firstname}{" "}{clientInfo.client_lastname}</h1>
         {permissions === "Admin" && <Link to={`/add-client-trial/${clientId}`}>Add Client Trial</Link>}
-        <FrequencyGraph />
+        <FrequencyGraph id={clientId}/>
       </div>
     </div>
    );
