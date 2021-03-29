@@ -16,17 +16,17 @@
     cursor: pointer;
 
     
-    @include responsive(tab-land) {
-      height: 70%;
-    }
+    // @include responsive(tab-land) {
+    //   height: 70%;
+    // }
 
-    @include responsive(tab-port) {
-      height: 60%;
-    }
+    // @include responsive(tab-port) {
+    //   height: 60%;
+    // }
 
-    @include responsive(phone) {
-      height: 55%;
-    }
+    // @include responsive(phone) {
+    //   height: 55%;
+    // }
 
     /* width */
     &::-webkit-scrollbar {
