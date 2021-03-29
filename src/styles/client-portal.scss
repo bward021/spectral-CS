@@ -24,7 +24,23 @@
     align-items: center;
     
     .graph-wrapper{
-      height: 300px;
+      height: 600px;
+      width: 600px;
+
+      @include responsive(tab-land) {
+        height: 450px;
+        width: 450px;
+      }
+    
+      @include responsive(tab-port) {
+        height: 400px;
+        width: 400px;
+      }
+    
+      @include responsive(phone) {
+        height: 300px;
+        width: 300px;
+      }
     }
 
   }
