@@ -19,6 +19,8 @@ const FrequencyGraph = (props) => {
       ],
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       //Customize chart options
     },
   };
