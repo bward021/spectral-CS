@@ -5,7 +5,6 @@ import { API_URL } from "../api_url/api-url"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-
 import AuthContext from "../Context/AuthContext";
 import LoginImage from "../../assets/images/Spectral.PNG"
 
@@ -13,6 +12,7 @@ export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const { handleSuccessfulLogin, setPermissions } = useContext(AuthContext);
 
@@ -33,7 +33,11 @@ export default function Login(props) {
           handleSuccessfulLogin()
           setPermissions(response.data.permissions)
           setIsLoading(false)
+          setError(false)
           history.push("/clients")
+        } else {
+          setError(true)
+          setIsLoading(false)
         }
       })
       .catch((error) => {
@@ -51,6 +55,7 @@ export default function Login(props) {
           }}
         > . </div>
         <div className="login-right-column">
+          {error && <p style={{color: "red"}} >Incorrect Username or Password</p>}
           <form className="login-form" onSubmit={(e)=>{handleSubmit(e)}}>
             <div>
               <input
