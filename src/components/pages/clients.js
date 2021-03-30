@@ -47,7 +47,7 @@ const Clients = (props) => {
 
   return (
     <div className="clients-container">
-      <h1>This is my Clients Page</h1>
+      <h1>Clients Page</h1>
       {loggedIn && `You are logged in as a ${permissions}`}
       <hr />
       <div className="render-clients-wrapper">

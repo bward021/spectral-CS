@@ -15,6 +15,11 @@
   width: 75%;
   margin: 0px;
 
+  @include responsive(tab-port) {
+    width: 100%;
+  }
+
+
   a {
     text-decoration: none;
     height: 30px;
@@ -48,6 +53,15 @@
     .client-data-link{
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      @include responsive(tab-port) {
+        width: 100%;
+        padding: 0px;
+      }
+
+      @include responsive(phone) { 
+        flex-direction: column;
+      }
 
     }
 

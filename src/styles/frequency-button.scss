@@ -4,6 +4,13 @@
   align-items: center;
   width: 100%;
 
+  @include responsive(tab-port) {
+    flex-direction: column;
+  }
+
+  @include responsive(phone) { 
+    flex-direction: column;
+  }
 
   .frequency-button-wrapper {
     display: flex;
@@ -15,6 +22,16 @@
     justify-content: center;
     align-content: center;
     background-color: #b5e7fa;
+
+    @include responsive(tab-land) {
+      height: 40px;
+      margin-top: 10px;
+      border: 1px solid #a7a7a7;
+    }
+
+    @include responsive(tab-port) {
+      height: 35px;
+    }
 
     input {
       outline: none;
@@ -36,6 +53,16 @@
       align-items: center;
       width: 170px;
       font-size: 15px;
+
+      @include responsive(tab-land) {
+        font-size: 12px;
+      }
+  
+      @include responsive(tab-port) {
+        font-size: 10px;
+
+      }
+      
 
       div {
         padding-left: 5px;

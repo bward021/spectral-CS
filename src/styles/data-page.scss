@@ -14,6 +14,12 @@
     width: 25%;
     font-size: 20px;
     font-family:'arial', serif;
+
+    @include responsive(tab-port) {
+      width: 50%;
+      font-size: 15px;
+    }
+
   }
 }
 
@@ -32,6 +38,14 @@
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  
+  @include responsive(tab-port) {
+    flex-direction: column;
+  }
+
+  @include responsive(phone) { 
+    flex-direction: column;
+  }
 }
 .right-column{
   grid-area: D;

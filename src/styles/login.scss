@@ -6,10 +6,20 @@
     width: 100vw;
     margin: 0px;
 
+    @include responsive(phone) {
+      display:flex;
+      flex-direction: column-reverse;
+    }
+
     .login-left-column {
-      background-size: cover;
+      background-size: 100% 100%;
       height: 100%;
       overflow: hidden;
+
+      @include responsive(phone) {
+        height:50%;
+        justify-content: space-around;
+      }
     }
 
     .login-right-column {
@@ -19,6 +29,12 @@
       justify-content: center;
       align-items: center;
 
+      @include responsive(phone) {
+        height:50%;
+        justify-content: space-around;
+        padding-top: 70px;
+      }
+
       .login-form {
         display: flex;
         flex-direction: column;
@@ -27,8 +43,18 @@
         text-align:center;
         justify-content: center;
         align-content: center;
-
+        
+        
+        @include responsive(phone) {
+          height: 100%;
+          justify-content: space-around;
+        }
+        
+        
+        
         input {
+          margin-top: 15px;
+          margin-bottom: 15px;
           height: 40px;
           width: 80%;
           outline: none;
@@ -38,6 +64,8 @@
 
         button {
           width: 80%;
+          margin-top: 15px;
+          margin-bottom: 15px;
           outline: none;
           border: none;
           background-color: #526d84;
