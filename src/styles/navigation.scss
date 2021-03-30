@@ -37,9 +37,11 @@
       background-color: transparent;
       color: rgb(72, 82, 109);
       outline: none;
-      border: none;
+      border-radius: 25px;
+      border: 1px solid rgb(72, 82, 109);
       font-size: 25px;
       transition: 0.5s ease-in-out;
+      
       @include responsive(tab-land) {
         font-size: 18px;
       }
@@ -50,6 +52,7 @@
 
       &:hover {
         color: antiquewhite;
+        background-color: rgb(72, 82, 109);
       }
     }
 
