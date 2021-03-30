@@ -1,12 +1,26 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 import AuthContext from "../Context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+
 
 const NavigationComponent = (props) => {
-  const { loggedInStatus, permissions, handleSuccessfulLogout } = useContext(
-    AuthContext
-  );
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const {
+    loggedInStatus,
+    permissions,
+    handleSuccessfulLogout,
+  } = useContext(AuthContext);
+
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(function(){ setIsLoading(false) }, 7000);
+    handleSuccessfulLogout();
+  };
 
   const renderNavBarLinks = () => {
     if (loggedInStatus === "LOGGED_IN" && permissions === "Admin") {
@@ -37,7 +51,13 @@ const NavigationComponent = (props) => {
             </NavLink>
           </div>
           <div className="logout-button">
-            <button onClick={handleSuccessfulLogout}>logout</button>
+            <button onClick={()=>{handleClick()}}>
+              {!isLoading ? (
+                "logout"
+              ) : (
+                <FontAwesomeIcon icon={faSpinner} spin />
+              )}
+            </button>
           </div>
         </div>
       );

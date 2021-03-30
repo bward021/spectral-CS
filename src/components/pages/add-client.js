@@ -58,15 +58,15 @@ const AddClient = (props) => {
         <form className="add-client-form" onSubmit={(e)=>{handleSubmit(e)}}>
           <div>
             <p>First Name</p>
-            <input type="text" onChange={(e)=>{setFirstName(e.target.value)}} value={firstName} />
+            <input type="text" onChange={(e)=>{setFirstName(e.target.value)}} value={firstName} required/>
           </div>
           <div>
             <p>Last Name</p>
-            <input type="text" onChange={(e)=>{setLastName(e.target.value)}} value={lastName}/>
+            <input type="text" onChange={(e)=>{setLastName(e.target.value)}} value={lastName} required/>
           </div>
           <div>
             <p>Age</p>
-            <input type="int" onChange={(e)=>{setAge(e.target.value)}} value={age}/>
+            <input type="int" onChange={(e)=>{setAge(e.target.value)}} value={age} required/>
           </div>
           <div>
             <p>Gender</p>
@@ -84,19 +84,19 @@ const AddClient = (props) => {
           </div>
           <div>
             <p>Supervisor</p>
-            <input type="text" onChange={(e)=>{setSupervisor(e.target.value)}} value={supervisor} />
+            <input type="text" onChange={(e)=>{setSupervisor(e.target.value)}} value={supervisor} required/>
           </div>
           <div>
             <p>Address 1</p>
-            <input type="text" onChange={(e)=>{setAddressOne(e.target.value)}} value={addressOne} />
+            <input type="text" onChange={(e)=>{setAddressOne(e.target.value)}} value={addressOne} required/>
           </div>
           <div>
             <p>Address 2</p>
-            <input type="text" onChange={(e)=>{setAddressTwo(e.target.value)}} value={addressTwo} />
+            <input type="text" onChange={(e)=>{setAddressTwo(e.target.value)}} value={addressTwo} required/>
           </div>
           <div>
             <p>City</p>
-            <input type="text" onChange={(e)=>{setCity(e.target.value)}} value={city} />
+            <input type="text" onChange={(e)=>{setCity(e.target.value)}} value={city} required/>
           </div>
           <div>
             <p>State</p>
@@ -105,6 +105,7 @@ const AddClient = (props) => {
               name="state"
               onChange={(e)=>{setSt(e.target.value)}}
               value={st}
+              required
             >
               <option value="" defaultValue>Select State</option>
               <option value="UT">UT</option>
@@ -112,7 +113,7 @@ const AddClient = (props) => {
           </div>
           <div>
             <p>Postal Code</p>
-            <input type="text" onChange={(e)=>{setPostalCode(e.target.value)}} value={postalCode} />
+            <input type="text" onChange={(e)=>{setPostalCode(e.target.value)}} value={postalCode} required/>
           </div>
           <button>Submit</button>
         </form>

@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { API_URL } from "../api_url/api-url"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 
 import AuthContext from "../Context/AuthContext";
@@ -10,6 +12,7 @@ import LoginImage from "../../assets/images/Spectral.PNG"
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   const { handleSuccessfulLogin, setPermissions } = useContext(AuthContext);
 
@@ -29,6 +32,7 @@ export default function Login(props) {
         if (response.data.id || response.data.id === 1) {
           handleSuccessfulLogin()
           setPermissions(response.data.permissions)
+          setIsLoading(false)
           history.push("/clients")
         }
       })
@@ -69,7 +73,8 @@ export default function Login(props) {
               />
             </div>
             <div>
-            <button>Sign In</button>
+                
+            <button onClick={() => {setIsLoading(true)}}>{!isLoading ? "Sign In" : <FontAwesomeIcon icon={faSpinner} spin />}</button>
             </div>
           </form>
 

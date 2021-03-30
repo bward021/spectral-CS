@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 import { API_URL } from "../api_url/api-url"
 
@@ -10,6 +12,8 @@ const EmployeeForm = (props) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [permissions, setPermissions] = useState(null);
+  const [isLoading, setIsLoading] = useState(false)
+
 
   useEffect(() => {
     if (props.employee){
@@ -22,7 +26,14 @@ const EmployeeForm = (props) => {
     props.employee
   ]);
 
+
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(function(){ setIsLoading(false) }, 7000);
+  };
+
   const handleSubmit = (e) => {
+    handleClick();
     if (props.employee) {
       axios({
         method: "patch",
@@ -129,7 +140,13 @@ const EmployeeForm = (props) => {
           <option value="Admin">Admin</option>
           <option value="Employee">Employee</option>
         </select>
-        <button>Submit</button>
+        <button disabled={isLoading}>
+              {!isLoading ? (
+                "Submit"
+              ) : (
+                <FontAwesomeIcon icon={faSpinner} spin />
+              )}
+            </button>
       </form>
     </div>
   );

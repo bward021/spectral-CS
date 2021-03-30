@@ -12,6 +12,10 @@
     padding: 15px;
     border-radius: 35px;
     box-shadow: 0 2px 11px rgba(0, 0, 0, 0.2);
+    
+    @include responsive(tab-port) {
+      width: 80%;
+    }
 
     .add-client-form {
       display: grid;
