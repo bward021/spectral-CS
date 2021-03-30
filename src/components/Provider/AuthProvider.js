@@ -24,6 +24,8 @@ const AuthProvider = (props) => {
           setLoggedInStatus("LOGGED_IN");
           setPermissions(response.data.employees_permissions)
           history.push("/clients")
+        } else {
+          history.push("/")
         }
       })
       .catch((error) => {
