@@ -23,12 +23,13 @@
 
     @include responsive(tab-port) {
       flex-direction: column;
-      font-size: 10px;
+      font-size: 15px;
       margin: 0px;
     }
 
     @include responsive(phone) { 
       flex-direction: column;
+      font-size: 10px;
     }
 
     button{
