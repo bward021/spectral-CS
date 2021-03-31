@@ -42,15 +42,17 @@ const FrequencyGraph = (props) => {
       withCredentials: true,
     }) 
     .then((response) => {
-      let dateArray = response.data.map((set) => {
-        return(set.frequency_instance_date)
-      })
-      setDates(dateArray.reverse())
-      let dataArray = response.data.map((set) => {
-        return(set.frequency_instance_data)
-      })
-      setData(dataArray.reverse())
-      setUpdate(2)
+      if (response.data !== "no frequency found"){
+        let dateArray = response.data.map((set) => {
+          return(set.frequency_instance_date)
+        })
+        setDates(dateArray.reverse())
+        let dataArray = response.data.map((set) => {
+          return(set.frequency_instance_data)
+        })
+        setData(dataArray.reverse())
+        setUpdate(2)
+      }
     })
     .catch((error)=> {
       console.log("error in graph: ", error)
