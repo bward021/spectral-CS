@@ -6,6 +6,20 @@
   margin: 100px;
   text-align: center;
 
+  button {
+    margin-bottom: 30px;
+    padding: 10px;
+    outline: none;
+    border:none;
+    border-radius: 30px;
+    background-color: #20c1fc;
+    transition: 0.4s ease-in-out;
+
+    &:hover {
+      background-color: #6fd6fc;
+    }
+  }
+
   .select-trial-type{
     width: 40%;
   }
@@ -17,6 +31,10 @@
     .trial-form {
       display: flex;
       flex-direction: column;
+
+      button {
+        margin: 20px;
+      }
     }
 
     .added-alert {

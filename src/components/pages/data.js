@@ -7,6 +7,7 @@ import FrequencyData from "../data-helpers/frequency-data";
 import TrialData from "../data-helpers/trial-data";
 
 const Data = (props) => {
+
   let { slug } = useParams();
   const [clientId] = useState(slug);
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));

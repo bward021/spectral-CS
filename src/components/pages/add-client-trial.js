@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import Duration from '../add-trial-helpers.js/duration';
 import Frequency from '../add-trial-helpers.js/frequency';
 import Trial from '../add-trial-helpers.js/trial';
 
 const AddClientTrial = (props) => {
-
+  let history = useHistory()
   let { slug } = useParams();
   const [clientId] = useState(slug)
   const [trialType, setTrialType] = useState("")
@@ -25,6 +25,7 @@ const AddClientTrial = (props) => {
   return ( 
     <div className="add-client-trial-container">
       <h1>Add Trial</h1>
+      <button onClick={() => {history.push(`/data/${clientId}`)}}>Navigate to Client Data Page</button>
       <select className="select-trial-type" onChange={(e) => {setTrialType(e.target.value)}} value={trialType}>
         <option value="" defaultValue>Select Trial Type</option>
         <option value="Trial">Trial</option>
