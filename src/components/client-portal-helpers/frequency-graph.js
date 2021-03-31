@@ -10,18 +10,16 @@ const FrequencyGraph = (props) => {
   const [dates, setDates] = useState([])
   const [data, setData] = useState([])
   const [update, setUpdate] = useState(0)
-
-  
   
   const chartConfig = {
     type: "line",
     data: {
       //Bring in data
-      labels: dates.reverse(),
+      labels: dates,
       datasets: [
         {
           label: "Frequencies",
-          data: data.reverse(),
+          data: data,
         },
       ],
     },
@@ -46,11 +44,11 @@ const FrequencyGraph = (props) => {
         let dateArray = response.data.map((set) => {
           return(set.frequency_instance_date)
         })
-        setDates(dateArray.reverse())
+        setDates(dateArray)
         let dataArray = response.data.map((set) => {
           return(set.frequency_instance_data)
         })
-        setData(dataArray.reverse())
+        setData(dataArray)
         setUpdate(2)
       }
     })

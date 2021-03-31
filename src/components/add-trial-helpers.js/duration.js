@@ -60,9 +60,10 @@ const Duration = (props) => {
           required
           value={name}
         />
-        <p>Description</p>
+        <label for="description">Description</label>
         <textarea
           type="text"
+          name="description"
           onChange={(e) => {
             setDescription(e.target.value);
           }}
