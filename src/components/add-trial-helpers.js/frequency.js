@@ -10,12 +10,10 @@ const Frequency = (props) => {
   const [description, setDescription] = useState("");
   const [id] = useState(props.id);
   const [isLoading, setIsLoading] = useState(false);
+  const [addAlert, setAddAlert] = useState(false);
 
   const handleClick = () => {
     setIsLoading(true);
-    setTimeout(function () {
-      setIsLoading(false);
-    }, 3000);
   };
 
   const handleSubmit = (e) => {
@@ -32,6 +30,11 @@ const Frequency = (props) => {
       .then((response) => {
         setName("");
         setDescription("");
+        setAddAlert(true);
+        setTimeout(() => {
+          setAddAlert(false);
+        }, 4000);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log("error in add Frequency: ", error);
@@ -71,6 +74,7 @@ const Frequency = (props) => {
           {!isLoading ? "Submit" : <FontAwesomeIcon icon={faSpinner} spin />}
         </button>
       </form>
+      <div className="added-alert">{ addAlert ? "Trial Added!" : null }</div>
     </div>
   );
 };

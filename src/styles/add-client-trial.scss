@@ -12,11 +12,18 @@
 
   .trial-form-wrapper{
     display: flex;
+    flex-direction: column;
     
     .trial-form {
       display: flex;
       flex-direction: column;
     }
 
+    .added-alert {
+      margin-top: 20px;
+      border-radius: 45px;
+      padding: 10px;
+      color: #05bafc;
+    }
   }
 }

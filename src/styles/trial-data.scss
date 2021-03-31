@@ -8,24 +8,16 @@
   .trial-list-container {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 525px;
     width: 80%;
     padding: 20px;
     overflow: hidden;
     overflow-y: scroll;
     cursor: pointer;
 
-    
-    // @include responsive(tab-land) {
-    //   height: 70%;
-    // }
-
-    // @include responsive(tab-port) {
-    //   height: 60%;
-    // }
-
     @include responsive(phone) {
       width: 75%;
+      height: 250px;
       font-size: 15px;
       text-align: left;
     }
